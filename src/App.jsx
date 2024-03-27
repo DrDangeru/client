@@ -75,7 +75,8 @@ async function buildMovieQuote(){
 
 async function sendMovieQuote(uploadMovie){
  fetch('http://localhost:3000/quote' ,{//Assuming server is running on same dom
-      method: 'POST',
+    method: 'POST',
+    mode: 'no-cors',
       headers: {
     'Content-Type': 'application/json', // Set the Content-Type 
       }
@@ -109,10 +110,10 @@ async function handleSearch(e) {
 
   fetch(url, { // Assuming your server is running on the same domain
     method: 'POST',
-    mode: 'cors',
-  
+    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json', // Set the Content-Type 
+     // 'Access-Control-Origin'
     },
     body: {
       'searchStr' : searchStr
