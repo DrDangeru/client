@@ -1,3 +1,9 @@
+# Should be a plugin style thing that can be used to fetch db data 
+# from and API. Have a fetch, save, and delete methods 
+# and eventually search methods on the GUI + the database on the
+# server folder. Cheers.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
