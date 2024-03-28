@@ -74,18 +74,18 @@ async function buildMovieQuote(){
 }
 
 async function sendMovieQuote(uploadMovie){
- fetch('http://localhost:3000/quote' ,{//Assuming server is running on same dom
+ fetch('http://localhost:3000/quote' ,{//IF server is running on same dom
     method: 'POST',
     mode: 'no-cors',
       headers: {
     'Content-Type': 'application/json', // Set the Content-Type 
       }
   ,
-  body: { //JSON.stringify()
+  body: {
     movie: postDataMovie,
     character: postDataCharacter,
     quote: postDataQuote
-  }
+ }
 })
    .then(response => {
   if (!response.ok) {
@@ -101,24 +101,21 @@ async function sendMovieQuote(uploadMovie){
 
 async function handleSearch(e) {
   e.preventDefault();
-  
-  // Access searchStr value directly by ID
   const searchStr = document.getElementById('searchStr').value.trim();
-
-  // Construct the URL with search query parameter
-  const url = `http://localhost:3000/quote`;
-
-  fetch(url, { // Assuming your server is running on the same domain
+  let params = [];
+  params.push({searchStr});
+  const url = `http://localhost:3000/quote?searchStr=${searchStr}`;
+ 
+  fetch(url, { //  if server is running on the same domain
     method: 'POST',
     mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json', // Set the Content-Type 
-     // 'Access-Control-Origin'
     },
-    body: {
-      'searchStr' : searchStr
-    }
-  })
+  
+    body: params
+})
+  
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
