@@ -76,7 +76,7 @@ async function buildMovieQuote(){
 
 async function sendMovieQuote(uploadMovie) {
   try {
-    const response = await fetch('http://localhost:3000/quote', {
+    const response = await fetch('http://localhost:3000/quoteAdd', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json', // Set the Content-Type 
@@ -94,7 +94,7 @@ async function sendMovieQuote(uploadMovie) {
     alert('Successfully added to db');
     return data; // Return the response data
   } catch (error) {
-    console.error('Server did not receive the data: Retry', error);
+    console.log('Server did not receive the data: Retry', error);
     throw error; // Re-throw the error to handle it elsewhere if needed
   }
 }
